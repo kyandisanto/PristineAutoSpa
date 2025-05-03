@@ -133,6 +133,7 @@ html, body {
 .hero {
   background: url('assets/background.jpg') center center/cover no-repeat;
   min-height: 100vh;
+  padding-top: 80px; /* Fixes image tucked under navbar */
   position: relative;
   display: flex;
   justify-content: center;
@@ -228,7 +229,7 @@ html, body {
   transform: translateY(0);
 }
 
-/* About Section */
+/* About */
 .about-card {
   background: #111;
   padding: 40px;
@@ -369,7 +370,7 @@ html, body {
   opacity: 0.8;
 }
 
-/* Mobile Styles */
+/* Mobile */
 @media (max-width: 768px) {
   .intro-animation {
     font-size: 2rem;
@@ -380,8 +381,8 @@ html, body {
   }
 
   .hero {
-    padding-top: 80px; /* fix image tucked under navbar */
-    background-size: contain;
+    padding-top: 100px;
+    background-size: cover;
     background-position: top center;
   }
 
@@ -392,9 +393,9 @@ html, body {
     position: absolute;
     top: 60px;
     right: 10px;
-    width: 170px;
-    padding: 15px;
-    border-radius: 10px;
+    width: 160px;
+    padding: 10px 15px;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
     z-index: 1000;
   }
