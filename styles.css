@@ -129,7 +129,7 @@ html, body {
   margin-left: 20px;
 }
 
-/* Hero */
+/* Hero Section */
 .hero {
   background: url('assets/background.jpg') center center/cover no-repeat;
   min-height: 100vh;
@@ -228,7 +228,7 @@ html, body {
   transform: translateY(0);
 }
 
-/* About */
+/* About Section */
 .about-card {
   background: #111;
   padding: 40px;
@@ -369,7 +369,7 @@ html, body {
   opacity: 0.8;
 }
 
-/* Mobile */
+/* Mobile Styles */
 @media (max-width: 768px) {
   .intro-animation {
     font-size: 2rem;
@@ -380,6 +380,7 @@ html, body {
   }
 
   .hero {
+    padding-top: 80px; /* fix image tucked under navbar */
     background-size: contain;
     background-position: top center;
   }
@@ -389,11 +390,11 @@ html, body {
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
     position: absolute;
-    top: 70px;
-    right: 0;
-    width: 200px;
-    padding: 20px;
-    border-radius: 8px;
+    top: 60px;
+    right: 10px;
+    width: 170px;
+    padding: 15px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
     z-index: 1000;
   }
@@ -407,6 +408,7 @@ html, body {
   }
 }
 
+/* Hide hamburger on desktop */
 @media (min-width: 769px) {
   .hamburger {
     display: none;
