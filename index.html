@@ -82,18 +82,29 @@
 <section id="contact" class="section fade-in">
   <div class="contact-card">
     <h2>Contact Us</h2>
-    <form action="mailto:info@prestineautospa.com" method="POST" enctype="text/plain" class="contact-form">
+    <form id="contact-form" action="https://formspree.io/f/xanoblob" method="POST" class="contact-form">
+      <input type="hidden" name="_subject" value="New message from Pristine Auto Spa">
+
+      <!-- Success Message -->
+      <div id="form-status" style="display:none; color: #4CAF50; font-weight: 500; margin-bottom: 10px;">
+        Message sent successfully!
+      </div>
+
       <div class="form-group">
         <input type="text" name="name" placeholder="Your Name" required>
       </div>
+
       <div class="form-group">
-        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="email" name="_replyto" placeholder="Your Email" required>
       </div>
+
       <div class="form-group">
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
       </div>
+
       <button type="submit" class="btn">Send Message</button>
     </form>
+
     <div class="social-icons">
       <a href="https://www.instagram.com/pristine_auto.spa/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.tiktok.com/@pristine_auto.spa" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -109,3 +120,43 @@
 <script src="scripts.js"></script>
 </body>
 </html>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const status = document.getElementById('form-status');
+    const formData = {
+      name: form.name.value,
+      _replyto: form._replyto.value,
+      message: form.message.value,
+      _subject: form._subject.value
+    };
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        status.textContent = "Message sent successfully!";
+        status.style.display = "block";
+        status.style.color = "#4CAF50";
+        form.reset();
+      } else {
+        status.textContent = "Something went wrong. Please try again.";
+        status.style.display = "block";
+        status.style.color = "red";
+      }
+    } catch (err) {
+      status.textContent = "Error sending message. Try again later.";
+      status.style.display = "block";
+      status.style.color = "red";
+    }
+  });
+</script>
